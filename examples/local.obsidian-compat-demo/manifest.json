@@ -1,0 +1,7 @@
+{
+  "id": "local.obsidian-compat-demo",
+  "name": "Obsidian Compat Demo",
+  "version": "0.1.0",
+  "description": "Same source style as an Obsidian plugin: require('obsidian') + module.exports = class extends Plugin. Commands + settings schema + loadData/saveData.",
+  "runtime": { "mode": "sandboxed", "entry": "main.js" }
+}

@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.project-portable",
+  "version": "1.0.0",
+  "minHostVersion": "1.0.0",
+  "name": "Project Portable",
+  "nameI18n": {"zho": "单文件工程"},
+  "description": "单文件工程 .artflow 导出/打开（PureRef 对齐 #8）。zip 容器：document.json + 托管资产原始字节。",
+  "descriptionI18n": {"en": "Single-file project .artflow export/open (PureRef parity #8). Zip container: document.json plus the raw bytes of managed assets."},
+  "category": "format",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "editable", "entry": "plugin.js" },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": ["command"],
+  "contributes": {}
+}

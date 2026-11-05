@@ -1,0 +1,77 @@
+{
+  "id": "builtin.skins-default",
+  "name": "默认皮肤包",
+  "version": "0.1.0",
+  "runtime": { "mode": "declarative" },
+  "description": "基于 SkinTokens 的默认霓虹、纸质笔记、深海漫游皮肤包（已转为外部声明式插件，随应用首次启动播种到用户插件目录）。",
+  "contributes": {
+    "skins": [
+      {
+        "id": "builtin.skin-default",
+        "name": "默认霓虹",
+        "mode": "dark",
+        "tokens": {
+          "canvas": {
+            "background": "#111827"
+          }
+        }
+      },
+      {
+        "id": "builtin.skin-paper",
+        "name": "纸质笔记",
+        "mode": "light",
+        "tokens": {
+          "color": {
+            "cardBg": "#faf6ee",
+            "cardBgAlt": "#f1ead9",
+            "accent": "#b45309",
+            "accentSoft": "rgba(180, 83, 9, 0.14)",
+            "border": "rgba(180, 83, 9, 0.28)",
+            "textPrimary": "#3f3a2e",
+            "textMuted": "#8a8069",
+            "success": "#4d7c0f",
+            "danger": "#b91c1c"
+          },
+          "radius": {
+            "card": "10px",
+            "control": "4px"
+          }
+        }
+      },
+      {
+        "id": "builtin.skin-ocean",
+        "name": "深海漫游",
+        "mode": "dark",
+        "tokens": {
+          "color": {
+            "cardBg": "#0c1f38",
+            "cardBgAlt": "#102a49",
+            "accent": "#38bdf8",
+            "accentSoft": "rgba(56, 189, 248, 0.16)",
+            "border": "rgba(56, 189, 248, 0.30)",
+            "textPrimary": "#e0f2fe",
+            "textMuted": "#7dd3fc",
+            "success": "#34d399",
+            "danger": "#fb7185"
+          },
+          "chrome": {
+            "panelBg": "rgba(6, 18, 36, 0.74)",
+            "panelBorder": "rgba(125, 211, 252, 0.25)",
+            "panelText": "#e0f2fe",
+            "hoverBg": "rgba(125, 211, 252, 0.16)"
+          },
+          "canvas": {
+            "background": "linear-gradient(160deg, #04101f 0%, #0a2540 55%, #0e3a5c 100%)",
+            "grid": "rgba(125, 211, 252, 0.13)"
+          },
+          "typography": {
+            "ui": "'Segoe UI', 'Microsoft YaHei UI', 'PingFang SC', sans-serif"
+          },
+          "icons": {
+            "topbar.boards": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18\"/><path d=\"M12 3a14.2 14.2 0 0 1 0 18M12 3a14.2 14.2 0 0 0 0 18\"/>"
+          }
+        }
+      }
+    ]
+  }
+}

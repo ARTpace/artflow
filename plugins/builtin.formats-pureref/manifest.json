@@ -1,0 +1,28 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.formats-pureref",
+  "version": "0.1.0",
+  "minHostVersion": "1.0.0",
+  "name": "PureRef 导入",
+  "nameI18n": {"en": "PureRef Import"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "editable",
+    "entry": "plugin.js"
+  },
+  "host": "renderer",
+  "configSchema": {
+    "maxPurMiB": "number"
+  },
+  "capabilities": [
+    "format.handler"
+  ],
+  "resourceBudget": {
+    "maxConcurrentJobs": 1,
+    "maxMemoryMB": 128
+  },
+  "description": "把 PureRef .pur 铺到画布。1.x 保留图片位置和便签；2.x 只抽出内嵌图片。",
+  "descriptionI18n": {"en": "Lay PureRef .pur files onto the canvas. 1.x preserves image positions and sticky notes; 2.x extracts embedded images only."},
+  "category": "format"
+}

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-restart-app"
+description = "Enables the tauri_restart_app command without any pre-configured scope."
+commands.allow = ["tauri_restart_app"]
+
+[[permission]]
+identifier = "deny-tauri-restart-app"
+description = "Denies the tauri_restart_app command without any pre-configured scope."
+commands.deny = ["tauri_restart_app"]

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-storage-load-project"
+description = "Enables the tauri_storage_load_project command without any pre-configured scope."
+commands.allow = ["tauri_storage_load_project"]
+
+[[permission]]
+identifier = "deny-tauri-storage-load-project"
+description = "Denies the tauri_storage_load_project command without any pre-configured scope."
+commands.deny = ["tauri_storage_load_project"]

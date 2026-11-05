@@ -1,0 +1,18 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.config-manager",
+  "version": "1.0.0",
+  "name": "Config & Storage",
+  "nameI18n": {"zho": "配置与存储"},
+  "description": "设置预设（导出/导入/分享）与存储管理（各配置卷的字节数、条目数、来源、降级与清空缓存）。",
+  "descriptionI18n": {"en": "Settings presets (export/import/share) and storage management (per-volume size, entry count, source, degradation, cache clearing)."},
+  "category": "ui",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "builtin", "entry": "./index.tsx" },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": ["ui.settings"],
+  "contributes": {}
+}

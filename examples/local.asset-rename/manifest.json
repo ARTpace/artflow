@@ -1,0 +1,11 @@
+{
+  "id": "local.asset-rename",
+  "name": "批量重命名",
+  "description": "给当前工程里的资产显示名做查找替换、加前缀或编号。",
+  "runtime": { "mode": "sandboxed", "entry": "plugin.js" },
+  "minHostVersion": "1.0.0",
+  "permissions": {
+    "library": ["rename"],
+    "host": ["assets.read"]
+  }
+}

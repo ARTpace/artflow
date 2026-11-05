@@ -1,0 +1,32 @@
+{
+  "manifestVersion": 2,
+  "engine": "declarative-v1",
+  "id": "ext.sample-inspector",
+  "name": "Sample Asset Inspector",
+  "version": "2.0.0",
+  "permissions": ["document.read", "document.write", "imports.parse", "agent.invoke"],
+  "requires": [],
+  "node": {
+    "id": "ext.sample-inspector.inspection",
+    "version": 2,
+    "title": "Inspection record",
+    "width": 240,
+    "height": 150,
+    "fields": {
+      "title": { "type": "string", "default": "Untitled" },
+      "count": { "type": "number", "default": 0 },
+      "passed": { "type": "boolean", "default": false },
+      "notes": { "type": "string", "default": "No notes" }
+    },
+    "migrations": [
+      { "from": 1, "to": 2, "rename": { "titleText": "title" } }
+    ]
+  },
+  "formats": [
+    { "extension": "insp", "recipe": "json-lines" }
+  ],
+  "tools": [
+    { "id": "ext.sample-inspector.bump-count", "title": "Bump inspection count", "field": "count", "parameter": "value", "default": 1 },
+    { "id": "ext.sample-inspector.set-passed", "title": "Mark inspection passed", "field": "passed", "parameter": "value", "default": true }
+  ]
+}

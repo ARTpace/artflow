@@ -1,0 +1,18 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.headless",
+  "version": "1.0.0",
+  "name": "Headless",
+  "nameI18n": {"zho": "无界面 MCP"},
+  "description": "MCP 外壳：把 manifest 声明的命令投影到本机服务，不持有资产库。",
+  "descriptionI18n": {"en": "MCP shell: projects manifest-declared commands onto a local service without holding an asset library."},
+  "category": "workspace",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "builtin", "entry": "./index.tsx" },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": ["ui.settings"],
+  "contributes": {}
+}

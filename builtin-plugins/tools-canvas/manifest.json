@@ -1,0 +1,65 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.tools-canvas",
+  "version": "1.0.0",
+  "minHostVersion": "1.0.0",
+  "name": "画布工具集",
+  "nameI18n": {"en": "Canvas Tools"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "builtin",
+    "entry": "index.tsx"
+  },
+  "host": "renderer",
+  "requires": [],
+  "optionalRequires": ["builtin.cards"],
+  "capabilities": [
+    "command",
+    "ui.menu",
+    "exporter"
+  ],
+  "description": "整合画布操作与导出工具：对齐/排序、图片替换、视图辅助、窗口控制、画布导出与系统导出（PureRef 对齐 #1-#10）。",
+  "descriptionI18n": {"en": "Unified canvas tools: arrange/align, image replace, view helpers, window controls, canvas export and system export (PureRef parity #1-#10)."},
+  "category": "ui",
+  "contributes": {
+    "builtinModules": [
+      {
+        "id": "builtin.arrange-tools",
+        "name": "排列工具",
+        "nameI18n": {"en": "Arrange Tools"},
+        "description": "水平/垂直等距分布、随机排列、等面积归一（PureRef #6）"
+      },
+      {
+        "id": "builtin.image-tools",
+        "name": "图片工具",
+        "nameI18n": {"en": "Image Tools"},
+        "description": "图片替换、替换已选图片、清除图片（PureRef #9 #10）"
+      },
+      {
+        "id": "builtin.view-tools",
+        "name": "视图工具",
+        "nameI18n": {"en": "View Tools"},
+        "description": "去色、淡化未选中、背景网格、网格吸附（PureRef #5 #7）"
+      },
+      {
+        "id": "builtin.window-tools",
+        "name": "窗口工具",
+        "nameI18n": {"en": "Window Tools"},
+        "description": "置顶、透明度调节、鼠标穿透（PureRef #1-#3）"
+      },
+      {
+        "id": "builtin.canvas-export",
+        "name": "画布导出",
+        "nameI18n": {"en": "Canvas Export"},
+        "description": "画布/选区导出 PNG 与复制到剪贴板（PureRef #4）"
+      },
+      {
+        "id": "builtin.exporters",
+        "name": "系统导出",
+        "nameI18n": {"en": "System Exporters"},
+        "description": "导出为系统对话框文件，粘贴到微信/PS 等外部应用"
+      }
+    ]
+  }
+}

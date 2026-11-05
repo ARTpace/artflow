@@ -1,0 +1,3 @@
+{"title":"Alpha batch","count":3,"passed":false,"notes":"first lot"}
+{"title":"Beta batch","count":7,"passed":true}
+{"count":1,"passed":true,"notes":"defaults exercised"}

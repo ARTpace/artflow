@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.canvas-export",
+  "version": "1.0.0",
+  "name": "Canvas Export",
+  "nameI18n": {"zho": "画布导出"},
+  "description": "画布/选区导出 PNG 与复制到剪贴板（PureRef 对齐 #4）。",
+  "descriptionI18n": {"en": "Export the canvas or selection as PNG and copy it to the clipboard (PureRef parity #4)."},
+  "category": "ui",
+  "sourceDir": "builtin/canvas-export",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "builtin", "entry": "./index.ts" },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": ["command"],
+  "contributes": {}
+}

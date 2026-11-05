@@ -1,0 +1,24 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.cards-files",
+  "version": "0.1.0",
+  "name": "文档与文件卡片",
+  "nameI18n": {"en": "Document & File Cards"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "builtin",
+    "entry": "index.tsx"
+  },
+  "host": "renderer",
+  "capabilities": [
+    "canvas.card"
+  ],
+  "resourceBudget": {
+    "maxActiveInstances": 64,
+    "maxMemoryMB": 256
+  },
+  "description": "Markdown、代码、书签、字体、3D 与通用文件卡片。可独立关闭，不影响媒体与阅读卡片。",
+  "descriptionI18n": {"en": "Markdown, code, bookmark, font, 3D and generic file cards. Independently switchable from media and reader cards."},
+  "category": "canvas"
+}

@@ -1,0 +1,18 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.canvas-toolbars",
+  "version": "1.0.0",
+  "name": "画布工具栏",
+  "nameI18n": {"en": "Canvas Toolbars"},
+  "description": "选区工具条、元素工具条和智能工具条（原本体挂接迁移）。",
+  "descriptionI18n": {"en": "Selection, element, and smart toolbars (migrated from the original app hooks)."},
+  "category": "ui",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "builtin", "entry": "./index.tsx" },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": ["ui.panel"],
+  "contributes": {}
+}

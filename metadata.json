@@ -1,0 +1,6 @@
+{
+  "name": "Remix: Artflow",
+  "description": "由Gemini（Nano Banana模型）提供支持的无限画布，用于通过文本提示生成和编辑图像。具有基本的绘图工具，允许用户上传、拖动和粘贴图像到类似米罗的白板上。 ",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

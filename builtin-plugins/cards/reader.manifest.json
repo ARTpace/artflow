@@ -1,0 +1,16 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.cards-reader",
+  "version": "0.1.0",
+  "name": "阅读与漫画卡片",
+  "nameI18n": {"en": "Reader & Comic Cards"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {"mode": "builtin", "entry": "index.tsx"},
+  "host": "renderer",
+  "capabilities": ["canvas.card"],
+  "resourceBudget": {"maxActiveInstances": 64, "maxMemoryMB": 256},
+  "description": "电子书阅读器与漫画翻页卡片。可独立关闭，不影响文档文件与媒体卡片。",
+  "descriptionI18n": {"en": "Ebook reader and comic page cards. Independently switchable from file and media cards."},
+  "category": "canvas"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "local.locale-jpn",
+  "name": "日本語パック",
+  "description": "示例声明式语言包：给界面加一档日语。表体放在 jpn.json 分片里（manifest 上限 16KB 装不下整档文案）。",
+  "runtime": { "mode": "declarative" },
+  "locales": [{ "language": "jpn", "file": "jpn.json" }]
+}

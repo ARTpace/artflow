@@ -1,0 +1,167 @@
+
+import React, { useState, useRef, useEffect } from 'react';
+import type { Board } from '../types';
+import { useTranslation } from '../utils/language-store';
+
+interface BoardPanelProps {
+    isOpen: boolean;
+    onClose: () => void;
+    boards: Board[];
+    activeBoardId: string;
+    onSwitchBoard: (id: string) => void;
+    onAddBoard: () => void;
+    onRenameBoard: (id: string, name: string) => void;
+    onDuplicateBoard: (id: string) => void;
+    onDeleteBoard: (id: string) => void;
+    generateBoardThumbnail: (elements: Board['elements']) => string;
+}
+
+const BoardItem: React.FC<{
+    board: Board;
+    isActive: boolean;
+    thumbnail: string;
+    onClick: () => void;
+    onRename: (name: string) => void;
+    onDuplicate: () => void;
+    onDelete: () => void;
+}> = ({ board, isActive, thumbnail, onClick, onRename, onDuplicate, onDelete }) => {
+    const { t } = useTranslation();
+    const [isEditing, setIsEditing] = useState(false);
+    const [name, setName] = useState(board.name);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
+    const menuRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        setName(board.name);
+    }, [board.name]);
+
+    useEffect(() => {
+        if (isEditing && inputRef.current) {
+            inputRef.current.focus();
+            inputRef.current.select();
+        }
+    }, [isEditing]);
+    
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+                setMenuOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const handleBlur = () => {
+        setIsEditing(false);
+        if (name.trim() === '') {
+            setName(board.name);
+        } else if (name.trim() !== board.name) {
+            onRename(name.trim());
+        }
+    };
+    
+    const handleMenuAction = (action: 'rename' | 'duplicate' | 'delete') => {
+        setMenuOpen(false);
+        switch (action) {
+            case 'rename':
+                setIsEditing(true);
+                break;
+            case 'duplicate':
+                onDuplicate();
+                break;
+            case 'delete':
+                if (window.confirm(t('board.deleteConfirm', board.name))) {
+                    onDelete();
+                }
+                break;
+        }
+    };
+
+    return (
+        <div 
+            onClick={onClick}
+            className={`group relative p-2 rounded-lg cursor-pointer transition-colors ${isActive ? 'bg-[var(--bp-accent-soft)]' : 'hover:bg-[var(--ui-hover)]'}`}
+        >
+            <div className={`aspect-[3/2] w-full rounded-md mb-2 overflow-hidden border-2 ${isActive ? 'border-[var(--bp-accent)]' : 'border-transparent'}`}>
+                <img src={thumbnail} alt={t('board.thumbnailAlt', board.name)} className="w-full h-full object-cover" />
+            </div>
+            <div className="flex items-center justify-between">
+                {isEditing ? (
+                     <input
+                        ref={inputRef}
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        onBlur={handleBlur}
+                        onKeyDown={(e) => e.key === 'Enter' && handleBlur()}
+                        className="w-full bg-transparent border-b border-[var(--bp-accent)] outline-none text-[var(--ui-text)] text-sm"
+                        onClick={e => e.stopPropagation()}
+                    />
+                ) : (
+                    <span className="text-sm truncate" onDoubleClick={() => setIsEditing(true)}>{board.name}</span>
+                )}
+               
+                <div className="relative" ref={menuRef}>
+                    <button 
+                        onClick={(e) => { e.stopPropagation(); setMenuOpen(p => !p); }} 
+                        className="p-1 rounded-full opacity-0 group-hover:opacity-100 hover:bg-white/20 transition-opacity"
+                    >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+                    </button>
+                    {menuOpen && (
+                        <div className="absolute right-0 bottom-full mb-1 z-10 w-32 bg-[var(--bp-ui-surface-strong)] text-[var(--bp-ui-text)] rounded-md shadow-lg border border-[var(--bp-ui-border)] py-1 text-sm">
+                            <button onClick={() => handleMenuAction('rename')} className="block w-full text-left px-3 py-1.5 hover:bg-white/10">{t('common.rename')}</button>
+                            <button onClick={() => handleMenuAction('duplicate')} className="block w-full text-left px-3 py-1.5 hover:bg-white/10">{t('common.duplicate')}</button>
+                            <div className="my-1 border-t border-white/10"></div>
+                            <button onClick={() => handleMenuAction('delete')} className="block w-full text-left px-3 py-1.5 hover:bg-red-500/20 text-red-400">{t('common.delete')}</button>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+
+export const BoardPanel: React.FC<BoardPanelProps> = ({ 
+    isOpen, onClose, boards, activeBoardId, onSwitchBoard, onAddBoard, 
+    onRenameBoard, onDuplicateBoard, onDeleteBoard, generateBoardThumbnail 
+}) => {
+    const { t } = useTranslation();
+    if (!isOpen) return null;
+
+    return (
+         <div 
+            data-bp-ui-floating-shell="" className="absolute left-4 top-16 z-20 flex h-[min(40rem,calc(100vh-8rem))] w-64 flex-col overflow-hidden rounded-[18px] border border-[var(--ui-border)] text-[var(--ui-text)]"
+            style={{ backgroundColor: 'var(--ui-bg-color)' }}
+        >
+            <div className="flex-shrink-0 flex justify-between items-center p-3 border-b border-[var(--ui-border)]">
+                <h3 className="text-base font-semibold">{t('board.title')}</h3>
+                <div className="flex items-center space-x-1">
+                    <button onClick={onAddBoard} className="rounded-lg p-1.5 text-[var(--bp-text-muted)] hover:bg-[var(--ui-hover)] hover:text-[var(--ui-text)]" title={t('board.newBoard')}>
+                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    </button>
+                    <button onClick={onClose} className="rounded-lg p-1 text-[var(--bp-text-muted)] hover:bg-[var(--ui-hover)] hover:text-[var(--ui-text)]">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+            </div>
+            <div className="flex-grow p-2 overflow-y-auto grid grid-cols-2 gap-2 content-start">
+                 {boards.map(board => (
+                     <BoardItem 
+                        key={board.id}
+                        board={board}
+                        isActive={board.id === activeBoardId}
+                        thumbnail={generateBoardThumbnail(board.elements)}
+                        onClick={() => onSwitchBoard(board.id)}
+                        onRename={(name) => onRenameBoard(board.id, name)}
+                        onDuplicate={() => onDuplicateBoard(board.id)}
+                        onDelete={() => onDeleteBoard(board.id)}
+                     />
+                 ))}
+            </div>
+        </div>
+    );
+};

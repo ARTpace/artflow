@@ -1,0 +1,26 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.media",
+  "version": "0.1.0",
+  "minHostVersion": "1.0.0",
+  "name": "音视频媒体包",
+  "nameI18n": {"en": "Audio & Video Media"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "editable",
+    "entry": "plugin.js"
+  },
+  "host": "renderer",
+  "requires": ["builtin.cards-media"],
+  "capabilities": [
+    "format.handler"
+  ],
+  "resourceBudget": {
+    "maxActiveInstances": 64,
+    "maxMemoryMB": 256
+  },
+  "description": "视频文件导入解析。视频卡和音频卡由内置卡片类型包绘制，音频文件解析在图像与文档格式包。",
+  "descriptionI18n": {"en": "Video file import parsing. Video and audio cards are drawn by the built-in card type package; audio file parsing lives in the image and document format package."},
+  "category": "format"
+}

@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.perf-monitor",
+  "version": "0.1.0",
+  "minHostVersion": "1.0.0",
+  "name": "性能监测 HUD",
+  "nameI18n": {"en": "Performance Monitor HUD"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "builtin",
+    "entry": "index.tsx"
+  },
+  "host": "renderer",
+  "capabilities": [
+    "ui.panel",
+    "command"
+  ],
+  "resourceBudget": {
+    "maxMemoryMB": 64
+  },
+  "description": "浮层性能 HUD：FPS（含 5s 最低值）、JS 堆、渲染进程与 GPU 进程内存（显存近似）、CPU；控件级卡顿归因（React 渲染按类型/控件实例、交互延迟按控件、隐藏排除法排查 GPU 类卡顿）；命令面板可开关",
+  "descriptionI18n": {"en": "Overlay performance HUD: FPS (including the 5s low), JS heap, renderer and GPU process memory (VRAM approximation), and CPU usage; per-control jank attribution (React render by type/instance, interaction latency per control, and a hide-and-probe flow for GPU-bound jank); toggleable from the command palette."},
+  "category": "ui"
+}

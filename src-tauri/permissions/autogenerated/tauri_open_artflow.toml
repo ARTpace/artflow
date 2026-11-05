@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-open-artflow"
+description = "Enables the tauri_open_artflow command without any pre-configured scope."
+commands.allow = ["tauri_open_artflow"]
+
+[[permission]]
+identifier = "deny-tauri-open-artflow"
+description = "Denies the tauri_open_artflow command without any pre-configured scope."
+commands.deny = ["tauri_open_artflow"]

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-install-external-plugin-from-path"
+description = "Enables the tauri_install_external_plugin_from_path command without any pre-configured scope."
+commands.allow = ["tauri_install_external_plugin_from_path"]
+
+[[permission]]
+identifier = "deny-tauri-install-external-plugin-from-path"
+description = "Denies the tauri_install_external_plugin_from_path command without any pre-configured scope."
+commands.deny = ["tauri_install_external_plugin_from_path"]

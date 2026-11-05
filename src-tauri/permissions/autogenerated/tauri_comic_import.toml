@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-comic-import"
+description = "Enables the tauri_comic_import command without any pre-configured scope."
+commands.allow = ["tauri_comic_import"]
+
+[[permission]]
+identifier = "deny-tauri-comic-import"
+description = "Denies the tauri_comic_import command without any pre-configured scope."
+commands.deny = ["tauri_comic_import"]

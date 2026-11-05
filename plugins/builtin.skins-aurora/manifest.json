@@ -1,0 +1,78 @@
+{
+  "id": "builtin.skins-aurora",
+  "name": "极光玻璃皮肤",
+  "version": "0.1.0",
+  "runtime": {
+    "mode": "declarative"
+  },
+  "description": "CSS 覆盖层 + 构建期资产 + 自声明配置的示范皮肤（M1/M2 对标 dsh-deep-whale）",
+  "contributes": {
+    "skins": [
+      {
+        "id": "builtin.skin-aurora",
+        "name": "极光玻璃 Aurora",
+        "nameI18n": {
+          "en": "Aurora Glass Skin"
+        },
+        "mode": "dark",
+        "order": 50,
+        "tags": [
+          "玻璃拟态",
+          "渐变",
+          "CSS 覆盖"
+        ],
+        "preview": {
+          "dark": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2307131d'/><stop offset='0.55' stop-color='%230b2436'/><stop offset='1' stop-color='%23123c3a'/></linearGradient></defs><rect width='96' height='64' fill='url(%23g)'/><circle cx='72' cy='16' r='22' fill='%232dd4bf' opacity='0.55'/><circle cx='20' cy='52' r='18' fill='%2338bdf8' opacity='0.4'/></svg>",
+          "light": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23eefaf7'/><stop offset='0.55' stop-color='%23ddf3fb'/><stop offset='1' stop-color='%23cdeee9'/></linearGradient></defs><rect width='96' height='64' fill='url(%23g)'/><circle cx='72' cy='16' r='22' fill='%2314b8a6' opacity='0.35'/><circle cx='20' cy='52' r='18' fill='%230ea5e9' opacity='0.25'/></svg>"
+        },
+        "tokens": {
+          "color": {
+            "cardBg": "#0a1a24",
+            "cardBgAlt": "#0e2431",
+            "accent": "#2dd4bf",
+            "accentSoft": "rgba(45, 212, 191, 0.16)",
+            "border": "rgba(45, 212, 191, 0.30)",
+            "textPrimary": "#e6fbf5",
+            "textMuted": "#8fc7bd"
+          },
+          "canvas": {
+            "background": "linear-gradient(150deg, #050d16 0%, #082032 60%, #0b3138 100%)",
+            "grid": "rgba(45, 212, 191, 0.12)"
+          }
+        },
+        "customization": {
+          "title": "Aurora 样式设置",
+          "settings": [
+            {
+              "key": "showGlow",
+              "type": "boolean",
+              "label": "显示辉光",
+              "defaultValue": true
+            },
+            {
+              "key": "glowIntensity",
+              "type": "number",
+              "label": "辉光强度",
+              "defaultValue": 0.6,
+              "min": 0,
+              "max": 1,
+              "step": 0.05
+            }
+          ],
+          "binding": {
+            "glowIntensity": "--bp-aurora-glow-opacity"
+          },
+          "attributeBindings": [
+            {
+              "name": "data-bp-aurora-glow",
+              "key": "showGlow",
+              "on": "on",
+              "off": "off"
+            }
+          ]
+        },
+        "css": "/* 极光玻璃 —— 每条规则都带皮肤作用域前缀（sanitizer 强制，整份拒收违规 CSS）。\n * 分工约定（文档第 8 节）：CSS 层管结构/装饰，token 层管颜色变量。\n * data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSI0MiUiIHI9IjUyJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMyZGQ0YmYiIHN0b3Atb3BhY2l0eT0iMC41Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNDUlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzOGJkZjgiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGZpbGw9InVybCgjZykiLz4KPC9zdmc+Cg== 占位由 index.ts 在 activate 时替换为构建期资产（dev 路径 / build dataURI）。\n */\n\n[data-bp-skin-active=\"builtin.skin-aurora\"] {\n  --bp-aurora-glow-opacity: 0.6;\n  --bp-aurora-grad-a: rgba(45, 212, 191, var(--bp-aurora-glow-opacity));\n  --bp-aurora-grad-b: rgba(56, 189, 248, calc(var(--bp-aurora-glow-opacity) * 0.75));\n}\n\n/* 画布区底色：双向极光渐变 + 右上角辉光资产（配置关闭辉光时第三层被规则 3 移除） */\n[data-bp-skin-active=\"builtin.skin-aurora\"] #root {\n  background-image:\n    radial-gradient(ellipse 70% 55% at 15% -5%, var(--bp-aurora-grad-a), transparent 70%),\n    radial-gradient(ellipse 55% 45% at 105% 105%, var(--bp-aurora-grad-b), transparent 70%),\n    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSI0MiUiIHI9IjUyJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMyZGQ0YmYiIHN0b3Atb3BhY2l0eT0iMC41Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNDUlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzOGJkZjgiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGZpbGw9InVybCgjZykiLz4KPC9zdmc+Cg==');\n  background-repeat: no-repeat;\n  background-size: 100% 100%, 100% 100%, 42% auto;\n  background-position: top left, bottom right, top right;\n}\n\n/* 「显示辉光」= off：仅保留基础渐变（配置投影属性由皮肤自管） */\n[data-bp-skin-active=\"builtin.skin-aurora\"][data-bp-aurora-glow=\"off\"] #root {\n  background-image:\n    radial-gradient(ellipse 70% 55% at 15% -5%, var(--bp-aurora-grad-a), transparent 70%),\n    radial-gradient(ellipse 55% 45% at 105% 105%, var(--bp-aurora-grad-b), transparent 70%);\n  background-size: 100% 100%, 100% 100%;\n  background-position: top left, bottom right;\n}\n"
+      }
+    ]
+  }
+}

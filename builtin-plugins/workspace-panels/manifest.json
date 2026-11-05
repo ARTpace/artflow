@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.workspace-panels",
+  "version": "0.1.0",
+  "minHostVersion": "1.0.0",
+  "name": "工作台面板包",
+  "nameI18n": {"en": "Workspace Panels"},
+  "description": "导入任务、项目工作台、状态 Dock、画布导航器、视图书签与当前板查找六个工作台组件（R18-R22 债务迁移）",
+  "descriptionI18n": {"en": "Six workspace components: import jobs, project workspace, status dock, canvas navigator, view bookmarks, and find-on-board (R18-R22 debt migration)."},
+  "category": "workspace",
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "builtin",
+    "entry": "index.tsx"
+  },
+  "host": "renderer",
+  "requires": [],
+  "configSchema": {
+    "navigatorOpacity": "number"
+  },
+  "capabilities": [
+    "ui.panel"
+  ]
+}

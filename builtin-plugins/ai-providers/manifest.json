@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.ai-providers",
+  "version": "1.0.0",
+  "name": "AI & External Tool Providers",
+  "nameI18n": {"zho": "AI 与外部工具接入"},
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": {
+    "mode": "builtin",
+    "entry": "builtin/ai-providers/index.ts"
+  },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": [
+    "ai.provider",
+    "asset.source",
+    "command",
+    "node.action"
+  ],
+  "description": "AI 出站生成与外部工具接入：Gemini 云端生成、本机 ComfyUI 抠图工作流（经主进程代理，renderer 不直连）",
+  "descriptionI18n": {"en": "AI outbound generation and external tool access: Gemini cloud generation and local ComfyUI cutout workflows (proxied through the main process; the renderer never connects directly)."},
+  "category": "ai"
+}

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-read-stored"
+description = "Enables the tauri_read_stored command without any pre-configured scope."
+commands.allow = ["tauri_read_stored"]
+
+[[permission]]
+identifier = "deny-tauri-read-stored"
+description = "Denies the tauri_read_stored command without any pre-configured scope."
+commands.deny = ["tauri_read_stored"]

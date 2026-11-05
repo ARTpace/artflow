@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-config-read"
+description = "Enables the tauri_config_read command without any pre-configured scope."
+commands.allow = ["tauri_config_read"]
+
+[[permission]]
+identifier = "deny-tauri-config-read"
+description = "Denies the tauri_config_read command without any pre-configured scope."
+commands.deny = ["tauri_config_read"]

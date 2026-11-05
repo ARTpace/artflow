@@ -1,0 +1,17 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.studio-chrome",
+  "version": "1.0.0",
+  "name": "Studio Chrome",
+  "nameI18n": {"zho": "工作室界面"},
+  "description": "提示词栏、标签面板、放映界面。组件仍在 components/，这里只负责挂载。",
+  "descriptionI18n": {"en": "Prompt bar, tags panel, and presentation UI. The components still live in components/; this plugin only mounts them."},
+  "category": "ui",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "builtin", "entry": "./index.tsx" },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": ["ui.panel"]
+}

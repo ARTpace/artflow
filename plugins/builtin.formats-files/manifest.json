@@ -1,0 +1,26 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.formats-files",
+  "version": "0.1.0",
+  "minHostVersion": "1.0.0",
+  "name": "文档与文件格式",
+  "nameI18n": {"en": "Document & File Formats"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "editable",
+    "entry": "plugin.js"
+  },
+  "host": "renderer",
+  "requires": ["builtin.cards-files"],
+  "capabilities": [
+    "format.handler"
+  ],
+  "resourceBudget": {
+    "maxConcurrentJobs": 1,
+    "maxMemoryMB": 32
+  },
+  "description": "Markdown、代码、书签、字体、3D 文件解析为已有卡片。普通未知文件仍由导入流程兜底。",
+  "descriptionI18n": {"en": "Parse Markdown, code, bookmarks, fonts, and 3D files into existing cards. Unrecognized files still fall back to the import flow."},
+  "category": "format"
+}

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-storage-request-import"
+description = "Enables the tauri_storage_request_import command without any pre-configured scope."
+commands.allow = ["tauri_storage_request_import"]
+
+[[permission]]
+identifier = "deny-tauri-storage-request-import"
+description = "Denies the tauri_storage_request_import command without any pre-configured scope."
+commands.deny = ["tauri_storage_request_import"]

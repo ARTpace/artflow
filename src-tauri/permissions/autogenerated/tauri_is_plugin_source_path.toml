@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-is-plugin-source-path"
+description = "Enables the tauri_is_plugin_source_path command without any pre-configured scope."
+commands.allow = ["tauri_is_plugin_source_path"]
+
+[[permission]]
+identifier = "deny-tauri-is-plugin-source-path"
+description = "Denies the tauri_is_plugin_source_path command without any pre-configured scope."
+commands.deny = ["tauri_is_plugin_source_path"]

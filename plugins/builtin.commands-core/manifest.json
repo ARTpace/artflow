@@ -1,0 +1,46 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.commands-core",
+  "version": "1.0.0",
+  "minHostVersion": "1.0.0",
+  "name": "核心命令集",
+  "nameI18n": {"en": "Core Commands"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "editable",
+    "entry": "plugin.js"
+  },
+  "host": "renderer",
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": [
+    "command",
+    "ui.menu"
+  ],
+  "description": "整合核心命令与画布右键菜单：编辑（撤销/重做/复制/删除）、演示（放映/帧导航）、工作区（适配画布/查找/视图标签/扩展）、图层排序/编组/栅格化/删除菜单项。",
+  "descriptionI18n": {"en": "Unified core commands & canvas menu: edit (undo/redo/copy/delete), presentation, workspace (fit/find/bookmarks/extensions), and layer/group/rasterize/delete menu items."},
+  "category": "ui",
+  "contributes": {
+    "builtinModules": [
+      {
+        "id": "builtin.commands-edit",
+        "name": "编辑与演示命令",
+        "nameI18n": {"en": "Edit & Presentation"},
+        "description": "撤销/重做/复制/删除与放映帧导航"
+      },
+      {
+        "id": "builtin.commands-workspace",
+        "name": "工作区命令",
+        "nameI18n": {"en": "Workspace Commands"},
+        "description": "适配画布、查找、视图标签、扩展面板"
+      },
+      {
+        "id": "builtin.canvas-menus",
+        "name": "画布右键菜单",
+        "nameI18n": {"en": "Canvas Context Menu"},
+        "description": "图层排序、编组、栅格化、复制、删除"
+      }
+    ]
+  }
+}

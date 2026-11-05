@@ -1,0 +1,18 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.ui-shell",
+  "version": "1.0.0",
+  "name": "UI Shell",
+  "nameI18n": {"zho": "界面外壳"},
+  "description": "界面外壳：顶栏、板列表面板、左侧工具条、图层/帧侧面板（原本体功能迁移）。",
+  "descriptionI18n": {"en": "UI shell: top bar, board list panel, left toolbar, and layer/frame side panels (migrated from the original app)."},
+  "category": "ui",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "builtin", "entry": "./index.tsx" },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": ["ui.panel"],
+  "contributes": {}
+}

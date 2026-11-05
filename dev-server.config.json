@@ -1,0 +1,4 @@
+{
+  "$comment": "Dev server 端口的唯一来源。vite.config.ts / scripts/launch-desktop.cjs / main.cjs 都从这里读，禁止各自写死 —— 端口变了就是换 localStorage origin，插件偏好会整套作废。start-electron.cmd 是批处理读不了 JSON，保持同值并在此处为准。",
+  "port": 4002
+}

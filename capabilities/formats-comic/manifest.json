@@ -1,0 +1,27 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.formats-comic",
+  "version": "0.2.0",
+  "minHostVersion": "1.0.0",
+  "name": "内置 CBZ 漫画阅读器",
+  "nameI18n": {"en": "Built-in CBZ Comic Reader"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "builtin",
+    "entry": "index.ts"
+  },
+  "host": "renderer",
+  "requires": ["builtin.cards-reader"],
+  "capabilities": [
+    "format.handler"
+  ],
+  "resourceBudget": {
+    "maxConcurrentJobs": 1,
+    "maxMemoryMB": 96
+  },
+  "description": "CBZ/ZIP 漫画导入（懒加载：档案存主进程仓，按需解页）。卡片支持双页对开、RTL 与键盘翻页。",
+  "descriptionI18n": {"en": "CBZ/ZIP comic import (lazy: archive vaulted in main, pages inflated on demand). Card supports spreads, RTL and keyboard paging."},
+  "category": "format",
+  "sourceDir": "builtin/formats-comic"
+}

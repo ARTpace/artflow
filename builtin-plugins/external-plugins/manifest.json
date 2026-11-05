@@ -1,0 +1,17 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.external-plugins",
+  "version": "1.0.0",
+  "name": "External Plugins",
+  "nameI18n": {"zho": "外部插件"},
+  "description": "安装第三方插件，并挂出沙箱面板。插件脚本不进入画布渲染进程。",
+  "descriptionI18n": {"en": "Install third-party plugins and surface sandboxed panels. Plugin scripts never enter the canvas renderer process."},
+  "category": "ui",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "builtin", "entry": "./index.tsx" },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": ["command", "ui.panel"]
+}

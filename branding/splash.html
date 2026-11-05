@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>Artflow</title>
+<!--
+  启动画面（splash）：由 main.cjs 以 frameless/transparent 窗口加载。
+  硬约束：
+  1) 必须完全自包含——无外链字体/图片/脚本，否则断网会卡住首帧；
+  2) 只读 ?caption= 一个查询参数，不碰任何 Node/IPC 能力面（该窗口不挂 preload）；
+  3) 纯 CSS 动画，进程起来后几十毫秒即可上屏。
+-->
+<style>
+  :root {
+    --ink: #e8ecf4;
+    --muted: rgba(232, 236, 244, 0.5);
+    --cyan: #22d3ee;
+    --violet: #8b5cf6;
+    --pink: #f472b6;
+    /* M6：主题化启动图配色（主进程 insertCSS 注入激活皮肤的 branding.splash 覆盖；这里是默认暗色）。 */
+    --bp-splash-bg: radial-gradient(120% 90% at 50% -10%, rgba(139, 92, 246, 0.22), transparent 60%), radial-gradient(90% 70% at 15% 110%, rgba(34, 211, 238, 0.16), transparent 65%), linear-gradient(160deg, #10131c 0%, #0a0c12 60%, #0b0a12 100%);
+    --bp-splash-accent: linear-gradient(90deg, #22d3ee, #8b5cf6, #f472b6);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%;
+    background: transparent;
+    overflow: hidden;
+    font-family: -apple-system, "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+    user-select: none;
+    cursor: default;
+  }
+  .card {
+    position: relative;
+    width: calc(100% - 24px);
+    height: calc(100% - 24px);
+    margin: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    border-radius: 20px;
+    background: var(--bp-splash-bg);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    animation: enter 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* 顶部一道细细的流光，交代"正在准备" */
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    border-radius: 20px 20px 0 0;
+    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.75), rgba(244, 114, 182, 0.75), transparent);
+    opacity: 0.75;
+    animation: sheen 2.4s ease-in-out infinite;
+  }
+
+  .mark { position: relative; width: 76px; height: 76px; }
+  .mark svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ring { animation: spin 1.15s linear infinite; transform-origin: 50% 50%; }
+  .glow { animation: breathe 2.2s ease-in-out infinite; }
+
+  .wordmark {
+    font-size: 13px;
+    letter-spacing: 0.34em;
+    text-indent: 0.34em;
+    font-weight: 600;
+    color: var(--ink);
+    background: linear-gradient(92deg, #dbeafe, #c4b5fd 45%, #fbcfe8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .caption {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  .bar {
+    position: relative;
+    width: 176px;
+    height: 3px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+  .bar > i {
+    position: absolute;
+    top: 0; left: 0;
+    width: 42%;
+    height: 100%;
+    border-radius: 3px;
+    background: var(--bp-splash-accent);
+    transition: width 0.35s ease, opacity 0.4s ease;
+    animation: sweep 1.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  @keyframes enter {
+    from { opacity: 0; transform: scale(0.972) translateY(6px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.06); }
+  }
+  @keyframes sweep {
+    0%   { left: -45%; }
+    100% { left: 100%; }
+  }
+  @keyframes sheen {
+    0%, 100% { opacity: 0.35; }
+    50%      { opacity: 0.9; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ring, .glow, .bar > i, .card::after { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="mark">
+      <svg viewBox="0 0 76 76" aria-hidden="true">
+        <defs>
+          <linearGradient id="flow" x1="8" y1="6" x2="68" y2="70" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#22d3ee" />
+            <stop offset="52%" stop-color="#8b5cf6" />
+            <stop offset="100%" stop-color="#f472b6" />
+          </linearGradient>
+          <linearGradient id="track" x1="6" y1="6" x2="70" y2="70" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="rgba(34,211,238,0.55)" />
+            <stop offset="100%" stop-color="rgba(139,92,246,0.12)" />
+          </linearGradient>
+        </defs>
+        <!-- 外圈：整圈暗底 + 一段渐变弧靠 rotate 转出"流淌"观感 -->
+        <g class="ring">
+          <circle cx="38" cy="38" r="33" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" />
+          <circle cx="38" cy="38" r="33" fill="none" stroke="url(#flow)" stroke-width="3"
+                  stroke-linecap="round" stroke-dasharray="58 150" />
+        </g>
+        <!-- 内层：三道流转笔画，构成 Artflow 的"流动"标记 -->
+        <g class="glow">
+          <path d="M23 53c6.5-4.5 9.5-11 12-18S42 20 49 17.5" fill="none" stroke="url(#flow)"
+                stroke-width="5.5" stroke-linecap="round" opacity="0.97" />
+          <path d="M28.5 59.5c7-5.5 10.5-13 13-21" fill="none" stroke="url(#flow)"
+                stroke-width="3.2" stroke-linecap="round" opacity="0.6" />
+          <path d="M40 30c3.5-4.2 7.5-6.8 12-7.8" fill="none" stroke="url(#flow)"
+                stroke-width="2.4" stroke-linecap="round" opacity="0.4" />
+        </g>
+      </svg>
+    </div>
+    <div class="wordmark">ARTFLOW</div>
+    <div class="bar"><i></i></div>
+    <div class="caption" id="caption">正在启动工作台</div>
+  </div>
+
+  <script>
+    // 只认一个白名单参数；其余一律忽略（该窗口不接 IPC，保持能力面为零）。
+    try {
+      const text = new URLSearchParams(location.search).get('caption');
+      if (text) document.getElementById('caption').textContent = text.slice(0, 40);
+    } catch (_) { /* 参数异常不影响首帧 */ }
+
+    // M6：接收主进程推送的真实加载进度（0–100）。一旦收到，停止不确定扫光动画、
+    // 按真实宽度显示进度；到 100 时淡出进度条。未收到则保持扫光不确定动画。
+    window.__splashProgress = function (pct) {
+      var bar = document.querySelector('.bar > i');
+      if (!bar) return;
+      pct = Math.max(0, Math.min(100, Number(pct) || 0));
+      bar.style.animation = 'none';
+      bar.style.left = '0';
+      bar.style.width = pct + '%';
+      if (pct >= 100) bar.style.opacity = '0';
+    };
+  </script>
+</body>
+</html>

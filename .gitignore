@@ -1,0 +1,54 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+release
+release-test
+release-fixed
+release-v011
+release-v012
+release-v012d
+.trash-refactor-old
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 回归检查的写盘结果（判据留痕用，不进版本库）
+*.result.txt
+scripts/.*.result.txt
+
+# Electron 打包产物（v013+ 每个 644MB，早期漏网，9 个目录共 5.8GB）
+release-v*
+# 重构垃圾目录 / 临时脚本区 / 安装测试转换残留
+.trash-refactor
+scratch/
+converted/
+
+# Tauri build output (keep Cargo.lock tracked for reproducible desktop builds)
+src-tauri/target/
+src-tauri/gen/
+
+# Local credentials and machine-specific shortcuts
+.env
+.env.*
+!.env.example
+*.lnk
+*.pem
+*.key

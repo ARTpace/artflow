@@ -1,0 +1,18 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.asset-library",
+  "version": "1.0.0",
+  "name": "Asset Library",
+  "nameI18n": {"zho": "资产库"},
+  "description": "托管资产库数据管理：容量、引用情况，以及清理未被工程引用的记录。",
+  "descriptionI18n": {"en": "Managed asset library data management: capacity, reference status, and cleanup of records that no project references."},
+  "category": "workspace",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "builtin", "entry": "./index.tsx" },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": ["ui.settings"],
+  "contributes": {}
+}

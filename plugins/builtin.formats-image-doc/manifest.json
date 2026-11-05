@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.formats-image-doc",
+  "version": "0.1.0",
+  "minHostVersion": "1.0.0",
+  "name": "图像与文档格式包",
+  "nameI18n": {"en": "Image & Document Formats"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "editable",
+    "entry": "plugin.js"
+  },
+  "host": "renderer",
+  "capabilities": [
+    "format.handler"
+  ],
+  "resourceBudget": {
+    "maxConcurrentJobs": 1,
+    "maxMemoryMB": 256
+  },
+  "description": "图像与文档格式解析：PNG/JPG/WebP/SVG/GIF 等通用图片路径与 PDF/DOC 类文档卡",
+  "descriptionI18n": {"en": "Image and document format parsing: general image paths such as PNG/JPG/WebP/SVG/GIF, plus PDF/DOC-style document cards."},
+  "category": "format"
+}

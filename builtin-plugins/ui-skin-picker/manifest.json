@@ -1,0 +1,22 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.ui-skin-picker",
+  "version": "0.1.0",
+  "minHostVersion": "1.0.0",
+  "name": "主题库",
+  "nameI18n": {"en": "Theme Gallery"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "builtin",
+    "entry": "index.tsx"
+  },
+  "host": "renderer",
+  "capabilities": [
+    "ui.panel",
+    "ui.skin"
+  ],
+  "description": "悬浮主题工作台：统一管理主题及整套工具界面的视觉外观",
+  "descriptionI18n": {"en": "Floating Theme Studio: manage themes and the visual appearance of the entire app."},
+  "category": "ui"
+}

@@ -1,0 +1,18 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.formats-psd",
+  "version": "1.0.0",
+  "name": "PSD Import Wizard",
+  "nameI18n": {"zho": "PSD 导入向导"},
+  "description": "PSD 导入向导：合并导入或按图层导入的交互弹层（解析由 formats-image-doc 的 psd handler 提供）。",
+  "descriptionI18n": {"en": "PSD import wizard: an interactive overlay for merged or per-layer import (parsing provided by the psd handler in formats-image-doc)."},
+  "category": "format",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "builtin", "entry": "./index.tsx" },
+  "requires": ["builtin.formats-image-doc"],
+  "optionalRequires": [],
+  "capabilities": ["ui.panel"],
+  "contributes": {}
+}

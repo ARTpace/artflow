@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-window-platform"
+description = "Enables the tauri_window_platform command without any pre-configured scope."
+commands.allow = ["tauri_window_platform"]
+
+[[permission]]
+identifier = "deny-tauri-window-platform"
+description = "Denies the tauri_window_platform command without any pre-configured scope."
+commands.deny = ["tauri_window_platform"]

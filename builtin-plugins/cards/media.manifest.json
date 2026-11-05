@@ -1,0 +1,16 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.cards-media",
+  "version": "0.1.0",
+  "name": "音视频卡片",
+  "nameI18n": {"en": "Audio & Video Cards"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {"mode": "builtin", "entry": "index.tsx"},
+  "host": "renderer",
+  "capabilities": ["canvas.card"],
+  "resourceBudget": {"maxActiveInstances": 64, "maxMemoryMB": 256},
+  "description": "视频与音频卡片。可独立关闭，不影响文档文件与阅读卡片。",
+  "descriptionI18n": {"en": "Video and audio cards. Independently switchable from file and reader cards."},
+  "category": "canvas"
+}

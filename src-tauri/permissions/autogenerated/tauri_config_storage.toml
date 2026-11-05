@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-config-storage"
+description = "Enables the tauri_config_storage command without any pre-configured scope."
+commands.allow = ["tauri_config_storage"]
+
+[[permission]]
+identifier = "deny-tauri-config-storage"
+description = "Denies the tauri_config_storage command without any pre-configured scope."
+commands.deny = ["tauri_config_storage"]

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Artflow Tauri Preview",
+  "version": "0.1.8",
+  "identifier": "com.artflow.tauri.preview",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:4002"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Artflow Tauri Preview",
+        "width": 1440,
+        "height": 960,
+        "minWidth": 800,
+        "minHeight": 600,
+        "decorations": false,
+        "backgroundColor": "#111827",
+        "dragDropEnabled": false,
+        "create": false
+      }
+    ],
+    "security": {
+      "capabilities": ["main-local"],
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": ["../branding/icons/artflow.ico"],
+    "resources": {
+      "../plugins": "plugins"
+    }
+  }
+}

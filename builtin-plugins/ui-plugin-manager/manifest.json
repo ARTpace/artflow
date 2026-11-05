@@ -1,0 +1,23 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.ui-plugin-manager",
+  "version": "1.0.0",
+  "minHostVersion": "1.0.0",
+  "name": "Plugin Manager",
+  "nameI18n": {"zho": "插件管理器"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "builtin",
+    "entry": "index.tsx"
+  },
+  "host": "renderer",
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": [
+    "ui.settings"
+  ],
+  "description": "插件管理悬浮面板：启停内置/第三方插件、安装 JSON 扩展包（开关重载生效）",
+  "descriptionI18n": {"en": "Floating plugin manager panel: enable, disable and install plugins and JSON packages (switches apply on reload)."},
+  "category": "ui"
+}

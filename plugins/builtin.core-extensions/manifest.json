@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.core-extensions",
+  "version": "1.0.0",
+  "minHostVersion": "1.0.0",
+  "name": "Core Extension Host",
+  "nameI18n": {"zho": "核心扩展宿主"},
+  "description": "声明式扩展宿主：包安装/启用管理、受管导入批、操作守卫钩子、扩展工具命令（平台通用消费面）。",
+  "descriptionI18n": {"en": "Declarative extension host: package install/enable management, managed import batches, operation guard hooks, and extension tool commands (the platform-wide consumption surface)."},
+  "category": "ui",
+  "author": "Artflow",
+  "license": "MIT",
+  "host": "renderer",
+  "runtime": { "mode": "editable", "entry": "plugin.js" },
+  "requires": [],
+  "optionalRequires": [],
+  "capabilities": ["ui.settings", "command"],
+  "contributes": {}
+}

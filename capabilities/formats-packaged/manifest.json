@@ -1,0 +1,31 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.formats-packaged",
+  "version": "0.1.0",
+  "minHostVersion": "1.0.0",
+  "name": "内置 Palm 与压缩漫画",
+  "nameI18n": {"en": "Built-in Palm & Archived Comics"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "builtin",
+    "entry": "index.ts"
+  },
+  "host": "renderer",
+  "requires": ["builtin.cards-reader"],
+  "configSchema": {
+    "maxPalmMiB": "number",
+    "maxComicMiB": "number"
+  },
+  "capabilities": [
+    "format.handler"
+  ],
+  "resourceBudget": {
+    "maxConcurrentJobs": 1,
+    "maxMemoryMB": 96
+  },
+  "description": "MOBI/AZW/AZW3 纯文本，以及 CBR/CB7/7Z 漫画页（未压缩存储或 ZIP 容器）",
+  "descriptionI18n": {"en": "MOBI/AZW/AZW3 plain text, plus CBR/CB7/7Z comic pages (uncompressed storage or ZIP containers)."},
+  "category": "format",
+  "sourceDir": "builtin/formats-packaged"
+}

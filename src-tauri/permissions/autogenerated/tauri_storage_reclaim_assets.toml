@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-storage-reclaim-assets"
+description = "Enables the tauri_storage_reclaim_assets command without any pre-configured scope."
+commands.allow = ["tauri_storage_reclaim_assets"]
+
+[[permission]]
+identifier = "deny-tauri-storage-reclaim-assets"
+description = "Denies the tauri_storage_reclaim_assets command without any pre-configured scope."
+commands.deny = ["tauri_storage_reclaim_assets"]

@@ -1,0 +1,145 @@
+{
+  "name": "artflow-zho",
+  "main": "main.cjs",
+  "private": true,
+  "version": "0.1.8",
+  "description": "Artflow — 无限画布创作工具",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "electron:dev": "electron .",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "npm run build && tauri build",
+    "tauri:check": "cargo check --manifest-path src-tauri/Cargo.toml",
+    "check:tauri-commands": "node scripts/check-tauri-commands.cjs",
+    "build": "vite build",
+    "dist:win": "vite build && electron-builder --win",
+    "preview": "vite preview",
+    "check:foundations": "node scripts/check-core-foundations.cjs",
+    "check:plugin-manager": "node scripts/check-plugin-manager.cjs",
+    "check:plugin-state-storage": "node scripts/check-plugin-state-storage.cjs",
+    "check:config-store": "node scripts/check-config-store.cjs",
+    "check:preference-storage": "node scripts/check-preference-storage.cjs",
+    "check:i18n-keys": "node scripts/check-i18n-keys.cjs",
+    "check:skin-css": "node scripts/check-skin-css.cjs",
+    "check:theme-studio": "node scripts/check-theme-studio.cjs",
+    "check:asset-inventory": "node scripts/check-asset-inventory.cjs",
+    "check:mcp": "node scripts/check-mcp.cjs",
+    "check:packaged-formats": "node scripts/check-packaged-formats.cjs",
+    "check:plugin-openings": "node scripts/check-plugin-openings.cjs",
+    "scan:obsidian": "node scripts/obsidian-compat-scan.cjs",
+    "check:viewport-transient": "node scripts/check-viewport-transient.cjs",
+    "check:drag-session": "node scripts/check-drag-session.cjs",
+    "check:transform-session": "node scripts/check-transform-session.cjs",
+    "check:window-move-growth": "electron scripts/check-window-move-growth.cjs",
+    "check:wheel-zoom": "node scripts/check-wheel-zoom.cjs",
+    "check:interaction-media": "node scripts/check-interaction-media.cjs",
+    "check:renderer-ssr": "node scripts/check-renderer-ssr.cjs",
+    "check:image-lod-budget": "node scripts/check-image-lod-budget.cjs",
+    "check:lod-tier-stability": "node scripts/check-lod-tier-stability.cjs",
+    "check:camera-compositing": "node scripts/check-camera-compositing.cjs",
+    "check:image-lod-medium": "node scripts/check-image-lod-medium.cjs",
+    "check:bulk-image-safety": "node scripts/check-bulk-image-safety.cjs",
+    "check:scale-hotpaths": "node scripts/check-scale-hotpaths.cjs",
+    "benchmark:hotpaths": "node scripts/benchmark-scale-hotpaths.cjs",
+    "benchmark:viewport": "node scripts/benchmark-viewport-index.cjs",
+    "benchmark:lod": "node scripts/benchmark-lod-admission.cjs",
+    "benchmark:churn": "node scripts/benchmark-zoom-churn.cjs",
+    "benchmark:snap": "node scripts/benchmark-snap-guide-index.cjs",
+    "benchmark:frame-parenting": "node scripts/benchmark-frame-parenting.cjs",
+    "check": "npm run typecheck && npm run build && npm run check:foundations && npm run check:plugin-manager && npm run check:plugin-state-storage && npm run check:config-store && npm run check:preference-storage && npm run check:safe-mode && npm run check:config-volume && npm run check:preset-library && npm run check:i18n-keys && npm run check:viewport-transient && npm run check:drag-session && npm run check:transform-session && npm run check:wheel-zoom && npm run check:renderer-ssr && npm run check:image-lod-budget && npm run check:lod-tier-stability && npm run check:camera-compositing && npm run check:image-lod-medium && npm run check:bulk-image-safety && npm run check:scale-hotpaths && npm run check:image-preparation && npm run check:cutout-matting && npm run check:plugin-lifecycle && npm run check:plugin-document && npm run check:plugin-transactions && npm run check:plugin-extensions && npm run check:skin-css && npm run check:theme-studio && npm run check:asset-inventory && npm run check:mcp && npm run check:packaged-formats && npm run check:plugin-openings",
+    "benchmark:history": "node scripts/benchmark-operation-history.cjs",
+    "benchmark:layer-panel": "node scripts/benchmark-layer-panel.cjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "check:image-preparation": "node scripts/check-image-preparation.cjs",
+    "check:cutout-matting": "node scripts/check-cutout-matting.cjs",
+    "check:plugin-lifecycle": "node scripts/check-plugin-lifecycle.cjs",
+    "check:plugin-document": "node scripts/check-plugin-document.cjs",
+    "check:plugin-transactions": "node scripts/check-plugin-transactions.cjs",
+    "check:plugin-extensions": "node scripts/check-plugin-extensions.cjs",
+    "check:safe-mode": "node scripts/check-safe-mode.cjs",
+    "check:config-volume": "node scripts/check-config-volume.cjs",
+    "check:preset-library": "node scripts/check-preset-library.cjs"
+  },
+  "dependencies": {
+    "@google/genai": "^1.17.0",
+    "@types/three": "^0.186.0",
+    "ag-psd": "^31.0.2",
+    "fflate": "0.8.3",
+    "lucide-react": "^1.47.0",
+    "pdfjs-dist": "^6.3.289",
+    "prismjs": "^1.30.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "three": "^0.186.0",
+    "utif": "^3.1.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.4",
+    "@types/node": "^22.14.0",
+    "@types/prismjs": "^1.26.6",
+    "@types/utif": "^3.0.6",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.6.1",
+    "electron": "^44.4.3",
+    "electron-builder": "^26.15.3",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "build": {
+    "appId": "com.artflow.app",
+    "productName": "ArtFlow",
+    "electronDist": "node_modules/electron/dist",
+    "directories": {
+      "output": "release-v018b"
+    },
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "dev-server.config.json",
+      "dist/**",
+      "branding/**",
+      "!branding/ip-candidates/**",
+      "main/**",
+      "storage/**",
+      "sandbox/**",
+      "workers/**",
+      {
+        "from": "plugins",
+        "to": "bundled-plugins"
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "types/artflow-plugin.d.ts",
+        "to": "plugin-sdk/artflow-plugin.d.ts"
+      },
+      {
+        "from": "examples",
+        "to": "plugin-sdk/examples"
+      }
+    ],
+    "win": {
+      "icon": "branding/icons/artflow.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "ArtFlow",
+      "artifactName": "ArtFlow-Setup-${version}.exe"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-comic-get-page"
+description = "Enables the tauri_comic_get_page command without any pre-configured scope."
+commands.allow = ["tauri_comic_get_page"]
+
+[[permission]]
+identifier = "deny-tauri-comic-get-page"
+description = "Denies the tauri_comic_get_page command without any pre-configured scope."
+commands.deny = ["tauri_comic_get_page"]

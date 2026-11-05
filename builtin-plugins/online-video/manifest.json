@@ -1,0 +1,14 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.online-video",
+  "version": "0.1.0",
+  "name": "在线视频卡片",
+  "nameI18n": {"en": "Online Video Cards"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {"mode": "builtin", "entry": "index.tsx"},
+  "host": "renderer",
+  "capabilities": ["canvas.card"],
+  "description": "粘贴 B 站、YouTube 与视频直链生成按需播放卡片。关闭后不再识别，已有卡片保留数据。",
+  "category": "canvas"
+}

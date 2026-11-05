@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-storage-cancel-preview-job"
+description = "Enables the tauri_storage_cancel_preview_job command without any pre-configured scope."
+commands.allow = ["tauri_storage_cancel_preview_job"]
+
+[[permission]]
+identifier = "deny-tauri-storage-cancel-preview-job"
+description = "Denies the tauri_storage_cancel_preview_job command without any pre-configured scope."
+commands.deny = ["tauri_storage_cancel_preview_job"]

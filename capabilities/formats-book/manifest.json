@@ -1,0 +1,31 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.formats-book",
+  "version": "0.1.0",
+  "minHostVersion": "1.0.0",
+  "name": "内置文本阅读器",
+  "nameI18n": {"en": "Built-in Text Reader"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "builtin",
+    "entry": "index.ts"
+  },
+  "host": "renderer",
+  "requires": ["builtin.cards-reader"],
+  "configSchema": {
+    "maxTextMiB": "number",
+    "maxEpubMiB": "number"
+  },
+  "capabilities": [
+    "format.handler"
+  ],
+  "resourceBudget": {
+    "maxConcurrentJobs": 1,
+    "maxMemoryMB": 32
+  },
+  "description": "TXT/HTML/EPUB 有限边界纯文本解析。阅读界面由内置卡片类型包绘制。",
+  "descriptionI18n": {"en": "Bounded plain-text parsing for TXT/HTML/EPUB. The reading UI is drawn by the built-in card type package."},
+  "category": "format",
+  "sourceDir": "builtin/formats-book"
+}

@@ -1,0 +1,26 @@
+{
+  "manifestVersion": 1,
+  "id": "builtin.formats-reader",
+  "version": "1.0.0",
+  "minHostVersion": "1.0.0",
+  "name": "阅读与漫画格式包",
+  "nameI18n": {"en": "Reader & Comic Formats"},
+  "author": "Artflow",
+  "license": "MIT",
+  "runtime": {
+    "mode": "editable",
+    "entry": "plugin.js"
+  },
+  "host": "renderer",
+  "requires": ["builtin.cards-reader"],
+  "capabilities": [
+    "format.handler"
+  ],
+  "resourceBudget": {
+    "maxConcurrentJobs": 2,
+    "maxMemoryMB": 128
+  },
+  "description": "整合文本/电子书/漫画格式解析：TXT/HTML/EPUB 阅读、MOBI/AZW/AZW3 阅读、CBZ/CBR/CB7/7Z 漫画。由内置卡片类型包绘制阅读与翻页 UI。",
+  "descriptionI18n": {"en": "Unified reader & comic formats: TXT/HTML/EPUB, MOBI/AZW/AZW3 readers, and CBZ/CBR/CB7/7Z comic archives. Reading UI is drawn by the built-in card type package."},
+  "category": "format"
+}

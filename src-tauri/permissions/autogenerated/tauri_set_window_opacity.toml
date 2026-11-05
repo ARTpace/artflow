@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-set-window-opacity"
+description = "Enables the tauri_set_window_opacity command without any pre-configured scope."
+commands.allow = ["tauri_set_window_opacity"]
+
+[[permission]]
+identifier = "deny-tauri-set-window-opacity"
+description = "Denies the tauri_set_window_opacity command without any pre-configured scope."
+commands.deny = ["tauri_set_window_opacity"]

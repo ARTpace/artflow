@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-window-control"
+description = "Enables the tauri_window_control command without any pre-configured scope."
+commands.allow = ["tauri_window_control"]
+
+[[permission]]
+identifier = "deny-tauri-window-control"
+description = "Denies the tauri_window_control command without any pre-configured scope."
+commands.deny = ["tauri_window_control"]

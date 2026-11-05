@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinite Canvas AI Editor</title>
+  <!-- 启动根底色：必须早于任何脚本与样式表生效。
+       为什么要有它：Electron 窗口默认底色是纯白，而 React 首帧之前页面自身也没有底色，
+       两者叠加就是启动时的白屏。这里把根底色钉成画布默认色（与 index.css 里
+       --bp-canvas-bg 的兜底值 #111827 一致），让"HTML 已解析、React 还没画"的那一瞬
+       也是深色。color-scheme 一并钉住，避免原生滚动条/表单控件闪白。 -->
+  <style>
+    html,
+    body {
+      background: #111827;
+      color-scheme: dark;
+    }
+  </style>
+  <script>
+    // 启动期错误钩子：最先执行，捕获所有 error / unhandledrejection / console.error。
+    // 落点优先**主进程日志**（userData/logs/electron.log）—— 跨重载存活，且 Electron 侧真的看得见
+    // （迁移前只写 localStorage，主进程完全不知情）；纯浏览器（vite dev，没有 preload 桥）时退回
+    // localStorage，行为与迁移前一致。窗口调试钩子 window.__readBootErrors 保留。
+    (function () {
+      var KEY = 'bp-boot-errors';
+      var bridge = window.artflowConfig;
+      var canReport = !!(bridge && typeof bridge.reportBootError === 'function');
+
+      var push = function (kind, text) {
+        var line = kind + ': ' + String(text).slice(0, 1500);
+        if (canReport) {
+          try { bridge.reportBootError(line); return; } catch (e) { /* 落到下面的兜底 */ }
+        }
+        try {
+          var list = JSON.parse(localStorage.getItem(KEY) || '[]');
+          list.push(line);
+          localStorage.setItem(KEY, JSON.stringify(list.slice(-10)));
+        } catch (e) {}
+      };
+
+      // 无桥（纯浏览器）时才用 localStorage 记录，清空一次以获得本次会话的错误集。
+      if (!canReport) { try { localStorage.setItem(KEY, '[]'); } catch (e) {} }
+
+      window.addEventListener('error', function (e) { push('error', (e.message || 'unknown') + ' @ ' + (e.filename || '') + ':' + e.lineno + '\n' + (e.error && e.error.stack || '')); });
+      window.addEventListener('unhandledrejection', function (e) { push('rejection', (e.reason && e.reason.stack) || String(e.reason)); });
+      var oe = console.error.bind(console);
+      console.error = function () { push('console.error', Array.prototype.map.call(arguments, function (a) { return (a && a.stack) || String(a); }).join(' ')); oe.apply(null, arguments); };
+      window.__readBootErrors = function () { try { return localStorage.getItem(KEY); } catch (e) { return '[]'; } };
+    })();
+  </script>
+  <!-- Tailwind 已改为本地构建（tailwind.config.js + postcss.config.cjs，经 index.css 注入）；
+       原 <script src="https://cdn.tailwindcss.com"> 因外网连接被断导致样式全崩，勿回退 -->
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "path": "https://esm.sh/path@^0.12.7"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="overflow-hidden">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

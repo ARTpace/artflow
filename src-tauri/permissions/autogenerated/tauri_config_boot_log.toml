@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-config-boot-log"
+description = "Enables the tauri_config_boot_log command without any pre-configured scope."
+commands.allow = ["tauri_config_boot_log"]
+
+[[permission]]
+identifier = "deny-tauri-config-boot-log"
+description = "Denies the tauri_config_boot_log command without any pre-configured scope."
+commands.deny = ["tauri_config_boot_log"]

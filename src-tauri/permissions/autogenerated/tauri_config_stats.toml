@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-config-stats"
+description = "Enables the tauri_config_stats command without any pre-configured scope."
+commands.allow = ["tauri_config_stats"]
+
+[[permission]]
+identifier = "deny-tauri-config-stats"
+description = "Denies the tauri_config_stats command without any pre-configured scope."
+commands.deny = ["tauri_config_stats"]

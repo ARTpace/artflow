@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-config-boot-error"
+description = "Enables the tauri_config_boot_error command without any pre-configured scope."
+commands.allow = ["tauri_config_boot_error"]
+
+[[permission]]
+identifier = "deny-tauri-config-boot-error"
+description = "Denies the tauri_config_boot_error command without any pre-configured scope."
+commands.deny = ["tauri_config_boot_error"]

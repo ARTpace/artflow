@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-read-plugin-clients"
+description = "Enables the tauri_read_plugin_clients command without any pre-configured scope."
+commands.allow = ["tauri_read_plugin_clients"]
+
+[[permission]]
+identifier = "deny-tauri-read-plugin-clients"
+description = "Denies the tauri_read_plugin_clients command without any pre-configured scope."
+commands.deny = ["tauri_read_plugin_clients"]

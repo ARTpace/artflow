@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-tauri-storage-list-import-jobs"
+description = "Enables the tauri_storage_list_import_jobs command without any pre-configured scope."
+commands.allow = ["tauri_storage_list_import_jobs"]
+
+[[permission]]
+identifier = "deny-tauri-storage-list-import-jobs"
+description = "Denies the tauri_storage_list_import_jobs command without any pre-configured scope."
+commands.deny = ["tauri_storage_list_import_jobs"]
